@@ -14,14 +14,14 @@ html,body{
 }
 #searchbar{
 	width: 100%;
-	height: 370px;
+	height: auto;
 	color: white;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	-webkit-box-shadow: 0 0 10px 0 #000;;
     -moz-box-shadow: 0 0 10px 0 #000;;
     box-shadow: 0 0 10px 0 #000;
-    border-bottom: 1px solid black;
+    padding-bottom: 10px;
 	background: #3b3b3b;
 }
 .searchbarpos{
@@ -50,11 +50,81 @@ html,body{
 	padding: .2em;
 	background:  linear-gradient(to bottom, #77b6ea, #3774bb) repeat scroll 0% 0% transparent;
 }
-.userinfobox{
+.info{
 	width: 100%;
-	display: none;
-	height: 300px;
-	color: black;
-    font-family: 'Noto Sans', sans-serif;
+	height: 525px;
+	color: #ebebeb;
+	font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px #000;
+}
+.inputinfo{
+	width: 95%;
+	height: 30px;
+	font-family: inherit;
+	border: none;
+	padding: .2em;
+	border-radius: 1.25px;
+	font-size: 1.25em;
+	background: #e7e7e7;
+}
+.infobox{
+	width: 20%;
+	padding: 5px;
+	vertical-align: middle;
+	display: inline-block;
+}
+.addfriend{
+	border: none;
+	border-radius: 1.25px;
+	font-size: 1.25em;
+	color: white;
+	cursor: pointer;
+	padding: .2em;
+	background:  linear-gradient(to bottom, #77b6ea, #3774bb) repeat scroll 0% 0% transparent;
+}
+.personalinfo{
+	color: #ebebeb;
+	font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px #000;
+	padding: 15px;
+	margin-left: -10px;
+}
+.profileimg{
+	margin-top: 10px;
+	float: left;
+	display: inline-block;
+}
+#footer{
+	width: 100%;
+	height: 50px;
+	color: white;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	-webkit-box-shadow: 0 0 10px 0 #000;;
+    -moz-box-shadow: 0 0 10px 0 #000;;
+    box-shadow: 0 0 10px 0 #000;
+    margin-top: 15px;
 	background: #3b3b3b;
+}
+.insidefooter{
+	font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px #000;
+	padding: 15px;
+}
+.insidefooter a{
+	color: #77b6ea;
+	text-decoration: none;
+}
+.insidefooter a:hover{
+	color: #3774bb;
+	-moz-transition: color 500ms; 
+    -webkit-transition: color 500ms; 
+    -o-transition: color 500ms; 
+    transition: color 500ms;
 }
