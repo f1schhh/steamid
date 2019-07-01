@@ -48,6 +48,7 @@ html,body{
 	font-size: 1.25em;
 	color: white;
 	padding: .2em;
+	cursor: pointer;
 	background:  linear-gradient(to bottom, #77b6ea, #3774bb) repeat scroll 0% 0% transparent;
 }
 .info{
