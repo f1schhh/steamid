@@ -5,6 +5,7 @@ class getInfo extends Config{
 
 	public function getSteamInfo($steamid){
             // Get config
+
             $config = new Config();
 
             $apikey = $config->apiKey();
@@ -39,10 +40,14 @@ class getInfo extends Config{
 
             //End of check vacban on user
 
+            if($steamid == null){
+                echo "FEL!";
+            }else{
+
               foreach ($userinfo['response']['players'] as $key => $user) {
 
                 if($user['steamid'] == null){
-                
+                    echo "Fel!";
                 }else{
 
                 @$nolinkSteam = $user['steamid'];
@@ -52,13 +57,13 @@ class getInfo extends Config{
                 }else if($user['personastate'] == 0){
                     $userstatus = '<font color="red">Offline</font>';
                 }else if($user['personastate'] == 3){
-                    $userstatus = "Busy";
+                    $userstatus = "Upptagen";
                 }else if($user['personastate'] == 4){
-                    $userstatus = '<font color="yellow">Away</font>';
+                    $userstatus = '<font color="yellow">Borta</font>';
                 }else if($user['personastate'] == 5){
                     $userstatus = "Snooze";
                 }else if($user['personastate'] == 6){
-                    $userstatus = "Looking for trade";
+                    $userstatus = "Letar efter trade";
                 }
 
                 $usercreated = date("j F Y", @$user['timecreated']);
@@ -109,13 +114,13 @@ class getInfo extends Config{
                 <a href="' . $user['avatarfull'] .  '" data-lightbox="'. $user['personaname'] .'"><img src=" ' . $user['avatarfull'] .  ' " /></a>
                  </div>
                 <div class="personalinfo">
-                <i>Real name:<i/> ' . @$user['realname'] .'
+                <i>Riktiga namn:<i/> ' . @$user['realname'] .'
                 <br /><i>Status:<i/> ' . @$userstatus .'
-                <br /><i>Country:<i/> ' . @$user['loccountrycode'] .'
-                <br /><i>Currently playing:<i/><font color="green"> ' . @$user['gameextrainfo'] .'</font>
-                <br /><i>Account created:<i/> '. @$createduser .'
-                <br /><i>Visibilty:<i/> '. @$uservisibility .'
-                <br /><i>Last online:<i/> '. @$lastlogin .'
+                <br /><i>Land:<i/> ' . @$user['loccountrycode'] .'
+                <br /><i>Spelar just nu:<i/><font color="green"> ' . @$user['gameextrainfo'] .'</font>
+                <br /><i>Kontot skapat:<i/> '. @$createduser .'
+                <br /><i>Synlighet:<i/> '. @$uservisibility .'
+                <br /><i>Senast inloggad:<i/> '. @$lastlogin .'
                 <br /><i>VAC: ' . $vacuserinfo . ' 
                 Community: ' . $communityuserinfo .'
                 Trade: ' . $tradebanneduserinfo .'
@@ -126,21 +131,22 @@ class getInfo extends Config{
                 Steam64 ID:  <br />
                 <input type="text" class="inputinfo" value=" '. $user['steamid'] .'" />
 
-                Nickname: <br />
+                Användarnamn: <br />
                 <input type="text" class="inputinfo" value=" '. $user['personaname'] .'" />
 
-                Profile url: <br />
+                Profil länk: <br />
                 <input type="text" class="inputinfo" value="'. $user['profileurl'] .'" />
 
-                Profile perma url: <br />
+                Profil perma länk: <br />
                 <input type="text" class="inputinfo" value="http://steamcommunity.com/profiles/' . $user['steamid'] . '" />
                 <br />
                 <br />
 
-                <a href="steam://friends/add/' . $user['steamid'] . '"><input type="button" class="addfriend" value="Add as friend"></a>
+                <a href="steam://friends/add/' . $user['steamid'] . '"><input type="button" class="addfriend" value="Lägg till som vän"></a>
                 ';
  
                 }
+            }
         }
 
         // End of linking profile url with steamid
@@ -170,7 +176,7 @@ class getInfo extends Config{
 
             if($userSteamID == null){
 
-                echo "Wrong";
+                echo "<font color='red'>Användaren kunde inte hittas...</font>";
 
             }else{
 
@@ -195,21 +201,21 @@ class getInfo extends Config{
             }
 
             //End of check vacban on user
-
+         
             foreach ($userinfo['response']['players'] as $key => $user) {
 
-                if($user['personastate'] == 1){
+                 if($user['personastate'] == 1){
                     $userstatus = '<font color="green">Online</font>';
                 }else if($user['personastate'] == 0){
                     $userstatus = '<font color="red">Offline</font>';
                 }else if($user['personastate'] == 3){
-                    $userstatus = "Busy";
+                    $userstatus = "Upptagen";
                 }else if($user['personastate'] == 4){
-                    $userstatus = '<font color="yellow">Away</font>';
+                    $userstatus = '<font color="yellow">Borta</font>';
                 }else if($user['personastate'] == 5){
                     $userstatus = "Snooze";
                 }else if($user['personastate'] == 6){
-                    $userstatus = "Looking for trade";
+                    $userstatus = "Letar efter trade";
                 }
 
                 $usercreated = date("j F Y", @$user['timecreated']);
@@ -260,13 +266,13 @@ class getInfo extends Config{
                 <a href="' . $user['avatarfull'] .  '" data-lightbox="'. $user['personaname'] .'"><img src=" ' . $user['avatarfull'] .  ' " /></a>
                  </div>
                 <div class="personalinfo">
-                <i>Real name:<i/> ' . @$user['realname'] .'
+                <i>Riktiga namn:<i/> ' . @$user['realname'] .'
                 <br /><i>Status:<i/> ' . @$userstatus .'
-                <br /><i>Country:<i/> ' . @$user['loccountrycode'] .'
-                <br /><i>Currently playing:<i/><font color="green"> ' . @$user['gameextrainfo'] .'</font>
-                <br /><i>Account created:<i/> '. @$createduser .'
-                <br /><i>Visibilty:<i/> '. @$uservisibility .'
-                <br /><i>Last online:<i/> '. @$lastlogin .'
+                <br /><i>Land:<i/> ' . @$user['loccountrycode'] .'
+                <br /><i>Spelar just nu:<i/><font color="green"> ' . @$user['gameextrainfo'] .'</font>
+                <br /><i>Kontot skapat:<i/> '. @$createduser .'
+                <br /><i>Synlighet:<i/> '. @$uservisibility .'
+                <br /><i>Senast inloggad:<i/> '. @$lastlogin .'
                 <br /><i>VAC: ' . $vacuserinfo . ' 
                 Community: ' . $communityuserinfo .'
                 Trade: ' . $tradebanneduserinfo .'
@@ -277,22 +283,22 @@ class getInfo extends Config{
                 Steam64 ID:  <br />
                 <input type="text" class="inputinfo" value=" '. $user['steamid'] .'" />
 
-                Nickname: <br />
+                Användarnamn: <br />
                 <input type="text" class="inputinfo" value=" '. $user['personaname'] .'" />
 
-                Profile url: <br />
+                Profil länk: <br />
                 <input type="text" class="inputinfo" value="'. $user['profileurl'] .'" />
 
-                Profile perma url: <br />
+                Profil perma länk: <br />
                 <input type="text" class="inputinfo" value="http://steamcommunity.com/profiles/' . $user['steamid'] . '" />
                 <br />
                 <br />
 
-                <a href="steam://friends/add/' . $user['steamid'] . '"><input type="button" class="addfriend" value="Add as friend"></a>
+                <a href="steam://friends/add/' . $user['steamid'] . '"><input type="button" class="addfriend" value="Lägg till som vän"></a>
                 ';
- 
             }
-            }
+            
+        }
             // End of getting steam users information
 
         }else{
@@ -300,15 +306,13 @@ class getInfo extends Config{
 
         $getUserinfoURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='. $apikey . '&steamids=' . $steamid . '';
 
-        $steamurl = "https://steamcommunity.com/id/moonsterplayer/";
-
         $getuserinfojson = file_get_contents($getUserinfoURL);
 
         $userinfo = json_decode($getuserinfojson , TRUE);
 
         // Check vacban on user 
 
-            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key='. $apikey . '&steamids='. $userSteamID . '';
+            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key='. $apikey . '&steamids='. $steamid . '';
             $vacinfojson = file_get_contents($vacURL);
 
             $vacinfo = json_decode($vacinfojson , TRUE);
@@ -322,25 +326,28 @@ class getInfo extends Config{
 
             //End of check vacban on user
 
-        foreach ($userinfo['response']['players'] as $key => $user) {
-
-            if($user['steamid'] == null){
-                echo "There is no user with this steamid....";
+            if(@$vacuser == null){
+                echo "<font color='red'>Fel steam64 ID kunde inte hittas...1</font>";
             }else{
 
+        foreach ($userinfo['response']['players'] as $key => $user) {
+ 
+                if($user['steamid'] == null){
+                echo "Användaren kunde inte hittas...";
+                 }else{
 
                 if($user['personastate'] == 1){
                     $userstatus = '<font color="green">Online</font>';
                 }else if($user['personastate'] == 0){
                     $userstatus = '<font color="red">Offline</font>';
                 }else if($user['personastate'] == 3){
-                    $userstatus = "Busy";
+                    $userstatus = "Upptagen";
                 }else if($user['personastate'] == 4){
-                    $userstatus = '<font color="yellow">Away</font>';
+                    $userstatus = '<font color="yellow">Borta</font>';
                 }else if($user['personastate'] == 5){
                     $userstatus = "Snooze";
                 }else if($user['personastate'] == 6){
-                    $userstatus = "Looking for trade";
+                    $userstatus = "Letar efter trade";
                 }
 
                 $usercreated = date("j F Y", @$user['timecreated']);
@@ -391,13 +398,13 @@ class getInfo extends Config{
                 <a href="' . $user['avatarfull'] .  '" data-lightbox="'. $user['personaname'] .'"><img src=" ' . $user['avatarfull'] .  ' " /></a>
                  </div>
                 <div class="personalinfo">
-                <i>Real name:<i/> ' . @$user['realname'] .'
+                <i>Riktiga namn:<i/> ' . @$user['realname'] .'
                 <br /><i>Status:<i/> ' . @$userstatus .'
-                <br /><i>Country:<i/> ' . @$user['loccountrycode'] .'
-                <br /><i>Currently playing:<i/><font color="green"> ' . @$user['gameextrainfo'] .'</font>
-                <br /><i>Account created:<i/> '. @$createduser .'
-                <br /><i>Visibilty:<i/> '. @$uservisibility .'
-                <br /><i>Last online:<i/> '. @$lastlogin .'
+                <br /><i>Land:<i/> ' . @$user['loccountrycode'] .'
+                <br /><i>Spelar just nu:<i/><font color="green"> ' . @$user['gameextrainfo'] .'</font>
+                <br /><i>Kontot skapat:<i/> '. @$createduser .'
+                <br /><i>Synlighet:<i/> '. @$uservisibility .'
+                <br /><i>Senast inloggad:<i/> '. @$lastlogin .'
                 <br /><i>VAC: ' . $vacuserinfo . ' 
                 Community: ' . $communityuserinfo .'
                 Trade: ' . $tradebanneduserinfo .'
@@ -408,22 +415,22 @@ class getInfo extends Config{
                 Steam64 ID:  <br />
                 <input type="text" class="inputinfo" value=" '. $user['steamid'] .'" />
 
-                Nickname: <br />
+                Användarnamn: <br />
                 <input type="text" class="inputinfo" value=" '. $user['personaname'] .'" />
 
-                Profile url: <br />
+                Profil länk: <br />
                 <input type="text" class="inputinfo" value="'. $user['profileurl'] .'" />
 
-                Profile perma url: <br />
+                Profil perma länk: <br />
                 <input type="text" class="inputinfo" value="http://steamcommunity.com/profiles/' . $user['steamid'] . '" />
                 <br />
                 <br />
 
-                <a href="steam://friends/add/' . $user['steamid'] . '"><input type="button" class="addfriend" value="Add as friend"></a>
+                <a href="steam://friends/add/' . $user['steamid'] . '"><input type="button" class="addfriend" value="Lägg till som vän"></a>
                 ';
  
             }
-
+        }
         }
 
         }
