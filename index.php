@@ -7,15 +7,19 @@ $userinfo = new getInfo();
 <html>
 <head>
 	<title>SteamID.se</title>
+  <link rel="shortcut icon" href="img/icon.ico">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/searchuser.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="css/lightbox.css" rel="stylesheet" />
+  <script src="js/lightbox.js"></script>
     <link href="css/index.css" rel="stylesheet" />
     <script>
       $(document).ready(function(){
         $(".info").hide();
             $(".searchbarbtn").click(function(){
 
+              $(".siteinformation").hide();
                if($(".info").is(":hidden")){
 
                 $(".info").slideDown("slow");
@@ -36,14 +40,25 @@ $userinfo = new getInfo();
         <div id="searchbar">
         	<div class="searchbarpos">
             <form id="search4user" method="POST" action="#">
-        		<input type="text" required="" placeholder="Steamid, steam64id, steam32id, profile url" name="searchid" class="searchtext" />
+        		<input type="text" required="" placeholder="Steam64 ID / profile url" name="searchid" class="searchtext" />
         		<input type="submit" class="searchbarbtn" value="Sök" />
           </form>
         		<br />
+            <div class="siteinformation">
 
-        		<div class="info">
+              SteamID.se -
+              är en enkel väg att få reda mycket information om en persons steamkonto. <br />
+              Använd dig utav något av detta nedanför &darr; för att söka i formuläret ovanför 
+              <br />
+              <br />
+              - http://steamcommunity.com/profiles/765XXXXXXXXXXXXX
+              <br />
+              - http://steamcommunity.com/id/URL/
+              <br />
+              - 765XXXXXXXXXXXXXX
 
-        	</div>
+          </div>
+        		<div class="info"></div>
         	</div>		
    </div>
 

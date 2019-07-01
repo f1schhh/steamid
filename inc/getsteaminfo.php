@@ -1,15 +1,21 @@
 <?php
-class getInfo{
+include('config.inc.php');
+class getInfo extends Config{
 
 
 	public function getSteamInfo($steamid){
+            // Get config
+            $config = new Config();
+
+            $apikey = $config->apiKey();
+
 
             // Start of linking profile url with steam id
             $newsteamurl=rtrim($steamid,"/ ");
             $urlSteamArray = explode('/',$newsteamurl);
             $steamprofileid = $urlSteamArray[sizeof($urlSteamArray)-1];
 
-            $getUserinfoURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4FD1CA494FC40FDA38140D4B288DCFEA&steamids=' . $steamid . '';
+            $getUserinfoURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='. $apikey . '&steamids=' . $steamid . '';
 
             $steamurl = "https://steamcommunity.com/id/moonsterplayer/";
 
@@ -19,7 +25,7 @@ class getInfo{
 
               // Check vacban on user 
 
-            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=4FD1CA494FC40FDA38140D4B288DCFEA&steamids='. $steamid . '';
+            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key='. $apikey . '&steamids='. $steamid . '';
             $vacinfojson = file_get_contents($vacURL);
 
             $vacinfo = json_decode($vacinfojson , TRUE);
@@ -100,7 +106,7 @@ class getInfo{
                 echo '
 
                 <div class="profileimg"> 
-                <img src=" ' . $user['avatarfull'] .  ' " />
+                <a href="' . $user['avatarfull'] .  '" data-lightbox="'. $user['personaname'] .'"><img src=" ' . $user['avatarfull'] .  ' " /></a>
                  </div>
                 <div class="personalinfo">
                 <i>Real name:<i/> ' . @$user['realname'] .'
@@ -116,7 +122,6 @@ class getInfo{
                 GameBans: ' . $gamebanneduser .'
                  </i>
                 </div>
-                <br />
                 <br />
                 Steam64 ID:  <br />
                 <input type="text" class="inputinfo" value=" '. $user['steamid'] .'" />
@@ -151,7 +156,7 @@ class getInfo{
             $urlSteamArray = explode('/',$newsteamurl);
             $steamprofileid = $urlSteamArray[sizeof($urlSteamArray)-1];
 
-            $URLSteamID = 'http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=4FD1CA494FC40FDA38140D4B288DCFEA&vanityurl=' . $steamprofileid . '';
+            $URLSteamID = 'http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key='. $apikey . '&vanityurl=' . $steamprofileid . '';
 
             $getURLSteamID = file_get_contents($URLSteamID);
 
@@ -169,7 +174,7 @@ class getInfo{
 
             }else{
 
-            $getUserinfoURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4FD1CA494FC40FDA38140D4B288DCFEA&steamids=' . $userSteamID . '';
+            $getUserinfoURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='. $apikey . '&steamids=' . $userSteamID . '';
 
             $getuserinfojson = file_get_contents($getUserinfoURL);
 
@@ -177,7 +182,7 @@ class getInfo{
 
             // Check vacban on user 
 
-            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=4FD1CA494FC40FDA38140D4B288DCFEA&steamids='. $userSteamID . '';
+            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key='. $apikey . '&steamids='. $userSteamID . '';
             $vacinfojson = file_get_contents($vacURL);
 
             $vacinfo = json_decode($vacinfojson , TRUE);
@@ -252,7 +257,7 @@ class getInfo{
                 echo '
 
                 <div class="profileimg"> 
-                <img src=" ' . $user['avatarfull'] .  ' " />
+                <a href="' . $user['avatarfull'] .  '" data-lightbox="'. $user['personaname'] .'"><img src=" ' . $user['avatarfull'] .  ' " /></a>
                  </div>
                 <div class="personalinfo">
                 <i>Real name:<i/> ' . @$user['realname'] .'
@@ -268,7 +273,6 @@ class getInfo{
                 GameBans: ' . $gamebanneduser .'
                  </i>
                 </div>
-                <br />
                 <br />
                 Steam64 ID:  <br />
                 <input type="text" class="inputinfo" value=" '. $user['steamid'] .'" />
@@ -294,7 +298,7 @@ class getInfo{
         }else{
 
 
-        $getUserinfoURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=4FD1CA494FC40FDA38140D4B288DCFEA&steamids=' . $steamid . '';
+        $getUserinfoURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key='. $apikey . '&steamids=' . $steamid . '';
 
         $steamurl = "https://steamcommunity.com/id/moonsterplayer/";
 
@@ -304,7 +308,7 @@ class getInfo{
 
         // Check vacban on user 
 
-            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=4FD1CA494FC40FDA38140D4B288DCFEA&steamids='. $userSteamID . '';
+            $vacURL = 'http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key='. $apikey . '&steamids='. $userSteamID . '';
             $vacinfojson = file_get_contents($vacURL);
 
             $vacinfo = json_decode($vacinfojson , TRUE);
@@ -384,7 +388,7 @@ class getInfo{
                 echo '
 
                 <div class="profileimg"> 
-                <img src=" ' . $user['avatarfull'] .  ' " />
+                <a href="' . $user['avatarfull'] .  '" data-lightbox="'. $user['personaname'] .'"><img src=" ' . $user['avatarfull'] .  ' " /></a>
                  </div>
                 <div class="personalinfo">
                 <i>Real name:<i/> ' . @$user['realname'] .'
@@ -400,7 +404,6 @@ class getInfo{
                 GameBans: ' . $gamebanneduser .'
                  </i>
                 </div>
-                <br />
                 <br />
                 Steam64 ID:  <br />
                 <input type="text" class="inputinfo" value=" '. $user['steamid'] .'" />
