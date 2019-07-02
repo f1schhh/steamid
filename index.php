@@ -7,6 +7,8 @@ $userinfo = new getInfo();
 <html>
 <head>
 	<title>SteamID.se</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SteamID.se - är en enkel väg att få reda mycket information om en persons steamkonto.">
   <link rel="shortcut icon" href="img/icon.ico">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/searchuser.js"></script>
@@ -40,7 +42,7 @@ $userinfo = new getInfo();
         <div id="searchbar">
         	<div class="searchbarpos">
             <form id="search4user" method="POST" action="#">
-        		<input type="text" required="" placeholder="Steam64 ID / profile url" name="searchid" class="searchtext" />
+        		<input type="text" required="" placeholder="Steam64 ID / profil länk" name="searchid" class="searchtext" />
         		<input type="submit" class="searchbarbtn" value="Sök" />
           </form>
         		<br />
@@ -72,7 +74,5 @@ $userinfo = new getInfo();
 
   </div>
 </div>
-
-
 </body>
 </html>
