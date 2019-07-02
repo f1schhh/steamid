@@ -9,6 +9,7 @@ $userinfo = new getInfo();
 	<title>SteamID.se</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="SteamID.se - är en enkel väg att få reda mycket information om en persons steamkonto.">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="img/icon.ico">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/searchuser.js"></script>
@@ -19,21 +20,11 @@ $userinfo = new getInfo();
     <script>
       $(document).ready(function(){
         $(".info").hide();
-            $(".searchbarbtn").click(function(){
-
-              $(".siteinformation").hide();
-               if($(".info").is(":hidden")){
-
-                $(".info").slideDown("slow");
-
-                }else{
-                  if($(".searchtext").is(":empty")){
-                }else{
-                  $(".info").slideUp("slow");
-                }
-                }
-      });
-      });
+    $(".searchbarbtn").click(function() { 
+        $(".siteinformation").hide();
+        $(".info").fadeIn("slow");
+    })
+});
     </script>
 </head>
 <body>
@@ -53,14 +44,14 @@ $userinfo = new getInfo();
               Använd dig utav något av detta nedanför &darr; för att söka i formuläret ovanför 
               <br />
               <br />
-              - http://steamcommunity.com/profiles/765XXXXXXXXXXXXX
+              - http://steamcommunity.com/profiles/steam64id
               <br />
               - http://steamcommunity.com/id/URL/
               <br />
               - 765XXXXXXXXXXXXXX
 
           </div>
-        		<div class="info"></div>
+        		<div class="info">Du har inte fyllt något i formuläret...</div>
         	</div>		
    </div>
 

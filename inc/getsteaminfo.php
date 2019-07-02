@@ -264,7 +264,7 @@ class getInfo extends Config{
 
                 <div class="profileimg"> 
                 <a href="' . $user['avatarfull'] .  '" data-lightbox="'. $user['personaname'] .'"><img src=" ' . $user['avatarfull'] .  ' " /></a>
-                 </div>
+                 </div><br />
                 <div class="personalinfo">
                 <i>Riktiga namn:<i/> ' . @$user['realname'] .'
                 <br /><i>Status:<i/> ' . @$userstatus .'

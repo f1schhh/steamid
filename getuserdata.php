@@ -6,9 +6,11 @@ require('inc/getsteaminfo.php');
 
     parse_str($searchid, $searchuser);
 
-    if($searchid == null){
+
+    if($searchid == "searchid="){
     	echo "<font color='red'>Fel du angav inte något i formuläret!</font>";
     }else{
     	$userinfo->getSteamInfo($searchuser['searchid']);
+    	
     }
 ?>
