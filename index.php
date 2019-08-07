@@ -1,19 +1,18 @@
 <?php
 require('inc/getsteaminfo.php');
 $userinfo = new getInfo();
-
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>SteamID.se</title>
+<head>	
+  <title>SteamID.se</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="SteamID.se - är en enkel väg att få reda mycket information om en persons steamkonto.">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="img/icon.ico">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="js/searchuser.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
   <link href="css/lightbox.css" rel="stylesheet" />
   <script src="js/lightbox.js"></script>
     <link href="css/index.css" rel="stylesheet" />
